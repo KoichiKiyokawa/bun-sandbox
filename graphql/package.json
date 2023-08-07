@@ -1,0 +1,17 @@
+{
+  "name": "bun-sandbox",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun src/index.ts"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "graphql": "^16.7.1",
+    "graphql-yoga": "^4.0.3"
+  }
+}
