@@ -1,0 +1,32 @@
+name: nestjs
+on:
+  push:
+    paths:
+      - nestjs/**
+      - .github/workflows/nestjs.yml
+    branches:
+      - main
+  pull_request:
+    paths:
+      - nestjs/**
+      - .github/workflows/nestjs.yml
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nestjs
+    steps:
+      - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: 0.7.1
+      - run: bun i --frozen-lockfile
+      - run: bun run prisma generate
+      - run: bun run lint
+      - run: bun run tsc --noEmit
+      - run: bun run build
+      - run: bun run test
