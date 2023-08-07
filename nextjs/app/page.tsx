@@ -1,9 +1,16 @@
 import Link from "next/link";
 
+type Todo = {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+};
+
 export default async function Home() {
-  const todos = await fetch("https://jsonplaceholder.typicode.com/todos").then(
-    (r) => r.json()
-  );
+  const todos: Todo[] = await fetch(
+    "https://jsonplaceholder.typicode.com/todos"
+  ).then((r) => r.json());
   return (
     <div className="space-y-2">
       {todos.map((todo) => (
